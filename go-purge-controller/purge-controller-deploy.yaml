@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: purge-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: purge-controller
+  template:
+    metadata:
+      labels:
+        app: purge-controller
+    spec:
+      containers:
+      - name: purge-controller
+        image: purge-controller:latest
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: purge-controller-svc
+spec:
+  selector:
+    app: purge-controller
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: ClusterIP

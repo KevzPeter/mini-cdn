@@ -79,7 +79,7 @@ docker build -t minicdn-static-site ./static-site
 minikube image load minicdn-static-site
 
 # Go controller
-docker build -t purge-controller:latest ./go-purge-controller
+docker build -t purge-controller:latest ./purge-controller
 minikube image load purge-controller:latest
 ```
 

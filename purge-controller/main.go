@@ -28,6 +28,6 @@ func purgeHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/purge", purgeHandler)
-	log.Println("🚀 Go Cache Controller running on :8080")
+	log.Println("🚀 Cache Controller running on :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

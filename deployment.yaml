@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: static-cdn
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: static-cdn
+  template:
+    metadata:
+      labels:
+        app: static-cdn
+    spec:
+      containers:
+      - name: nginx
+        image: minicdn:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
